@@ -1,10 +1,20 @@
 @echo off
 rem Barbie Horse Trails Speedrun Save Replacer Tool
+
+rem vv black magic from stackoverflow bc pwd doesn't work on windows xdd
+rem FOR /F "tokens=* USEBACKQ" %%g IN (`cd`) do (SET "workingdir=%%g")
+set "workingdir=%~dp0"
+
 echo The default save directory is C:\Users\YOURNAME\AppData\LocalLow\Outright Games Ltd\barbie
 echo.
 
-rem vv black magic from stackoverflow bc pwd doesn't work on windows xdd
-FOR /F "tokens=* USEBACKQ" %%g IN (`cd`) do (SET "workingdir=%%g")
+if "%~1" == "" (
+    rem no dragfile
+) else (
+    echo "%~1"
+    set "fullsave=%~1"
+    goto copy
+)
 
 echo Your current directory is: %workingdir%
 echo If is not the directory where your system.barb is located, please move this tool to the correct directory and run it again.
