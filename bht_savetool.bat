@@ -126,6 +126,12 @@ if exist "%fullback%" (
 :copy
 del "%workingdir%\game.barb"
 copy "%fullsave%" "%workingdir%\game.barb"
+if exist "%workingdir%\photos.barb" (
+    del "%workingdir%\photos.barb"
+    if exist "%workingdir%\safephotos" (
+        copy "%workingdir%\safephotos" "%workingdir%\photos.barb"
+    )
+)
 echo Your save file has been successfully replaced!
 
 pause
